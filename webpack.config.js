@@ -1,6 +1,6 @@
 const path = require('path');
 const { AotPlugin } = require('@ngtools/webpack');
-console.log(path.resolve(__dirname, 'input'));
+
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'input', 'main.ts'),
