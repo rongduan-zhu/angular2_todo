@@ -24,10 +24,13 @@
   "devDependencies": {
     "@angular/compiler-cli": "^4.2.4",
     "@ngtools/webpack": "^1.4.2",
+    "@types/core-js": "^0.9.39",
+    "@types/lodash": "^4.14.58",
+    "@types/node": "^7.0.11",
     "html-loader": "^0.4.5",
     "lodash": "^4.17.4",
     "tslint": "^5.4.3",
     "typescript": "^2.3.4",
-    "webpack": "^2.6.1",
+    "webpack": "^2.6.1"
   }
 }

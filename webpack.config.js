@@ -12,7 +12,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: '@ngtools/webpack',
+        loader: ['@ngtools/webpack'],
       },
       {
         test: /\.html$/,
@@ -24,6 +24,10 @@ module.exports = {
         }]
       }
     ]
+  },
+
+  resolve: {
+    extensions: ['.js', '.ts']
   },
 
   output: {
