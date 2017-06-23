@@ -1,0 +1,12 @@
+FROM node:8.1.2
+
+WORKDIR /var/assets_build
+
+COPY src input/
+COPY webpack.config.js package.json ./
+
+RUN yarn global add webpack
+
+RUN yarn install
+
+ENTRYPOINT yarn run build

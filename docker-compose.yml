@@ -1,0 +1,13 @@
+version: '2'
+services:
+  asset:
+    build:
+      context: .
+      dockerfile: Dockerfile.asset
+    volumes:
+      - ./dist:/var/assets_build/output
+      - ./tsconfig.json:/var/assets_build/tsconfig.json
+      - ./webpack.config.js:/var/assets_build/webpack.config.js
+      - ./yarn.lock:/var/assets_build/yarn.lock
+      - ./package.json:/var/assets_build/package.json
+      - ./src:/var/assets_build/input
