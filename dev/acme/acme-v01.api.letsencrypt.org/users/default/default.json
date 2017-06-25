@@ -1,0 +1,20 @@
+{
+	"Email": "",
+	"Registration": {
+		"body": {
+			"resource": "reg",
+			"id": 17827333,
+			"key": {
+				"kty": "EC",
+				"crv": "P-384",
+				"x": "_Zskmu-JIV42ifRh3vPnp2X7zUoOMX1x8U6beaSiP1TFkw42ClsthX-qIBUPej_y",
+				"y": "FbnwP1DcICPjhbEwXhk7yq-BFg1is0Rzkrfg_u-RLf4aA0gUzTdDH5_l3mS-5LKw"
+			},
+			"contact": [],
+			"agreement": "https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf"
+		},
+		"uri": "https://acme-v01.api.letsencrypt.org/acme/reg/17827333",
+		"new_authzr_uri": "https://acme-v01.api.letsencrypt.org/acme/new-authz",
+		"terms_of_service": "https://letsencrypt.org/documents/LE-SA-v1.1.1-August-1-2016.pdf"
+	}
+}

@@ -1,0 +1,16 @@
+http://localhost {
+    redir to https://docker.dev{uri}
+}
+
+http://docker.dev {
+    redir https://docker.dev{uri}
+}
+
+https://docker.dev {
+    root /var/docker.dev
+
+    gzip
+    log stdout
+    timeouts none
+    tls /etc/caddycerts/dev-cert.pem /etc/caddycerts/dev-key.pem
+}
