@@ -1,8 +1,11 @@
-import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
+import { NgModule }      from '@angular/core';
 
 import { AppComponent }  from './app.component';
+import { TodosComponent } from '../todo/todos.component';
+
+import { TodoService } from '../services/todo.service';
 
 @NgModule({
   imports: [
@@ -10,7 +13,11 @@ import { AppComponent }  from './app.component';
     FormsModule
   ],
   declarations: [
-    AppComponent
+    AppComponent,
+    TodosComponent
+  ],
+  providers: [
+    TodoService
   ],
   bootstrap: [ AppComponent ]
 })
