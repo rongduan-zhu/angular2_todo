@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 210);
+/******/ 	return __webpack_require__(__webpack_require__.s = 211);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -25673,6 +25673,7 @@ exports.isObject = isObject;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TodoService; });
 var TodoService = (function () {
     function TodoService() {
+        this.todos = [];
     }
     TodoService.prototype.getTodos = function () {
         return this.todos;
@@ -25680,11 +25681,11 @@ var TodoService = (function () {
     TodoService.prototype.addTodo = function (todo) {
         this.todos.push(todo);
     };
-    TodoService.prototype.markComplete = function (index) {
-        this.todos[index].completed = true;
+    TodoService.prototype.markComplete = function (todo) {
+        todo.completed = true;
     };
-    TodoService.prototype.reactivate = function (index) {
-        this.todos[index].completed = false;
+    TodoService.prototype.markIncomplete = function (todo) {
+        todo.completed = true;
     };
     return TodoService;
 }());
@@ -32645,6 +32646,8 @@ var AppComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TodosComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_todo_service__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_todo__ = __webpack_require__(210);
+
 
 var TodosComponent = (function () {
     function TodosComponent(todoService) {
@@ -32655,6 +32658,14 @@ var TodosComponent = (function () {
     };
     TodosComponent.prototype.getTodos = function () {
         this.todos = this.todoService.getTodos();
+    };
+    TodosComponent.prototype.addTodo = function (content) {
+        var todo = new __WEBPACK_IMPORTED_MODULE_1__core_todo__["a" /* Todo */](content);
+        this.todoService.addTodo(todo);
+        this.getTodos();
+    };
+    TodosComponent.prototype.markComplete = function (todo) {
+        this.todoService.markComplete(todo);
     };
     TodosComponent.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_0__services_todo_service__["a" /* TodoService */] }]; };
     return TodosComponent;
@@ -32814,9 +32825,11 @@ var AppComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_43" /*
 /* unused harmony export View_TodosComponent_Host_0 */
 /* unused harmony export TodosComponentNgFactory */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__input_todo_todos_component__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__input_services_todo_service__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__input_todo_todos_component__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__input_utils_todo_pipe__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__input_services_todo_service__ = __webpack_require__(82);
+
 
 
 
@@ -32825,33 +32838,61 @@ var styles_TodosComponent = [];
 var RenderType_TodosComponent = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵcrt */]({ encapsulation: 2,
     styles: styles_TodosComponent, data: {} });
 function View_TodosComponent_1(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_28" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 7, 'li', [], null, null, null, null, null)), (_l()(),
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'div', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Status: ', ''])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'div', [], null, null, null, null, null)), (_l()(),
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Content: ', ''])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' ']))], null, function (_ck, _v) {
-        var currVal_0 = _v.context.$implicit.status;
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_28" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 4, 'li', [], null, [[null, 'click']], function (_v, en, $event) {
+            var ad = true;
+            var _co = _v.component;
+            if (('click' === en)) {
+                var pd_0 = (_co.markComplete(_v.context.$implicit) !== false);
+                ad = (pd_0 && ad);
+            }
+            return ad;
+        }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'div', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Content: ', ''])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' ']))], null, function (_ck, _v) {
+        var currVal_0 = _v.context.$implicit.content;
         _ck(_v, 3, 0, currVal_0);
-        var currVal_1 = _v.context.$implicit.content;
-        _ck(_v, 6, 0, currVal_1);
+    });
+}
+function View_TodosComponent_2(_l) {
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_28" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 4, 'li', [], null, null, null, null, null)), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'div', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Content: ', ''])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' ']))], null, function (_ck, _v) {
+        var currVal_0 = _v.context.$implicit.content;
+        _ck(_v, 3, 0, currVal_0);
     });
 }
 function View_TodosComponent_0(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_28" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 4, 'ul', [['class',
-                'todos']], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* ɵand */](16777216, null, null, 1, null, View_TodosComponent_1)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵdid */](802816, null, 0, __WEBPACK_IMPORTED_MODULE_1__angular_common__["l" /* NgForOf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* ViewContainerRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* IterableDiffers */]], { ngForOf: [0,
-                'ngForOf'] }, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(),
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' ']))], function (_ck, _v) {
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_28" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 6, 'div', [], null, null, null, null, null)), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, [['todoContent', 1]], null, 0, 'input', [['type', 'text']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'button', [], null, [[null, 'click']], function (_v, en, $event) {
+            var ad = true;
+            var _co = _v.component;
+            if (('click' === en)) {
+                var pd_0 = (_co.addTodo(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 2).value) !== false);
+                ad = (pd_0 && ad);
+            }
+            return ad;
+        }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Add Todo'])),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'h1', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Active'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 5, 'ul', [['class', 'todos']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* ɵand */](16777216, null, null, 2, null, View_TodosComponent_1)),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵdid */](802816, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["l" /* NgForOf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* ViewContainerRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* IterableDiffers */]], { ngForOf: [0, 'ngForOf'] }, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_38" /* ɵpid */](0, __WEBPACK_IMPORTED_MODULE_3__input_utils_todo_pipe__["a" /* TodoPipe */], []), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'h1', [], null, null, null, null, null)),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Completed'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 5, 'ul', [['class', 'todos']], null, null, null, null, null)),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* ɵand */](16777216, null, null, 2, null, View_TodosComponent_2)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵdid */](802816, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["l" /* NgForOf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* ViewContainerRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* IterableDiffers */]], { ngForOf: [0,
+                'ngForOf'] }, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_38" /* ɵpid */](0, __WEBPACK_IMPORTED_MODULE_3__input_utils_todo_pipe__["a" /* TodoPipe */], []), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' ']))], function (_ck, _v) {
         var _co = _v.component;
-        var currVal_0 = _co.todos;
-        _ck(_v, 3, 0, currVal_0);
+        var currVal_0 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵunv */](_v, 14, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 15).transform(_co.todos, false));
+        _ck(_v, 14, 0, currVal_0);
+        var currVal_1 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵunv */](_v, 24, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 25).transform(_co.todos, true));
+        _ck(_v, 24, 0, currVal_1);
     }, null);
 }
 function View_TodosComponent_Host_0(_l) {
     return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_28" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 2, 'todos', [], null, null, null, View_TodosComponent_0, RenderType_TodosComponent)),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵprd */](512, null, __WEBPACK_IMPORTED_MODULE_3__input_services_todo_service__["a" /* TodoService */], __WEBPACK_IMPORTED_MODULE_3__input_services_todo_service__["a" /* TodoService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵdid */](114688, null, 0, __WEBPACK_IMPORTED_MODULE_2__input_todo_todos_component__["a" /* TodosComponent */], [__WEBPACK_IMPORTED_MODULE_3__input_services_todo_service__["a" /* TodoService */]], null, null)], function (_ck, _v) {
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵprd */](512, null, __WEBPACK_IMPORTED_MODULE_4__input_services_todo_service__["a" /* TodoService */], __WEBPACK_IMPORTED_MODULE_4__input_services_todo_service__["a" /* TodoService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵdid */](114688, null, 0, __WEBPACK_IMPORTED_MODULE_1__input_todo_todos_component__["a" /* TodosComponent */], [__WEBPACK_IMPORTED_MODULE_4__input_services_todo_service__["a" /* TodoService */]], null, null)], function (_ck, _v) {
         _ck(_v, 2, 0);
     }, null);
 }
-var TodosComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_43" /* ɵccf */]('todos', __WEBPACK_IMPORTED_MODULE_2__input_todo_todos_component__["a" /* TodosComponent */], View_TodosComponent_Host_0, {}, {}, []);
+var TodosComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_43" /* ɵccf */]('todos', __WEBPACK_IMPORTED_MODULE_1__input_todo_todos_component__["a" /* TodosComponent */], View_TodosComponent_Host_0, {}, {}, []);
 //# sourceMappingURL=todos.component.ngfactory.js.map
 
 /***/ }),
@@ -32873,6 +32914,22 @@ var AppModule = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Todo; });
+var Todo = (function () {
+    function Todo(content) {
+        this.completed = false;
+        this.content = content;
+    }
+    return Todo;
+}());
+
+//# sourceMappingURL=todo.js.map
+
+/***/ }),
+/* 211 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__gendir_input_app_app_module_ngfactory__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(32);
@@ -32880,6 +32937,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["c" /* platformBrowser */])().bootstrapModuleFactory(__WEBPACK_IMPORTED_MODULE_0__gendir_input_app_app_module_ngfactory__["a" /* AppModuleNgFactory */]);
 //# sourceMappingURL=main.js.map
+
+/***/ }),
+/* 212 */,
+/* 213 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TodoPipe; });
+var TodoPipe = (function () {
+    function TodoPipe() {
+    }
+    TodoPipe.prototype.transform = function (todos, completed) {
+        return todos.filter(function (todo) { return todo.completed == completed; });
+    };
+    return TodoPipe;
+}());
+
+//# sourceMappingURL=todo.pipe.js.map
 
 /***/ })
 /******/ ]);

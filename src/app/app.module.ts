@@ -7,6 +7,8 @@ import { TodosComponent } from '../todo/todos.component';
 
 import { TodoService } from '../services/todo.service';
 
+import { TodoPipe } from '../utils/todo.pipe';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -14,7 +16,8 @@ import { TodoService } from '../services/todo.service';
   ],
   declarations: [
     AppComponent,
-    TodosComponent
+    TodosComponent,
+    TodoPipe
   ],
   providers: [
     TodoService

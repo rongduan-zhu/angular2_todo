@@ -20,4 +20,14 @@ export class TodosComponent implements OnInit {
   getTodos() : void {
     this.todos = this.todoService.getTodos();
   }
+
+  addTodo(content: string) : void {
+    let todo = new Todo(content);
+    this.todoService.addTodo(todo);
+    this.getTodos();
+  }
+
+  markComplete(todo: Todo) : void {
+    this.todoService.markComplete(todo);
+  }
 }
