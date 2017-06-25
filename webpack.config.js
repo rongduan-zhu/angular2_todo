@@ -1,5 +1,6 @@
 const path = require('path');
 const { AotPlugin } = require('@ngtools/webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -39,6 +40,10 @@ module.exports = {
     new AotPlugin({
       tsConfigPath: './tsconfig.json',
       entryModule: '/var/assets_build/input/app/app.module#AppModule'
+    }),
+    new HtmlWebpackPlugin({
+      template: '/var/assets_build/input/index.html',
+      chunks: ['polyfills', 'vendor', 'app']
     })
   ],
 
