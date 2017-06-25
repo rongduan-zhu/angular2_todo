@@ -25685,7 +25685,7 @@ var TodoService = (function () {
         todo.completed = true;
     };
     TodoService.prototype.markIncomplete = function (todo) {
-        todo.completed = true;
+        todo.completed = false;
     };
     return TodoService;
 }());

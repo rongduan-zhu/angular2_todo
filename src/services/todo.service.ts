@@ -19,6 +19,6 @@ export class TodoService {
   }
 
   markIncomplete(todo: Todo) : void {
-    todo.completed = true;
+    todo.completed = false;
   }
 }
