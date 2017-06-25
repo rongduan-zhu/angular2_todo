@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { TodoService } from '../services/todo.service';
 import { Todo } from '../core/todo';
+import { Operation, Action, Status } from '../core/operation';
+
+import { KeyedCollection } from '../utils/keyedCollection';
 
 @Component({
   selector: 'todos',
@@ -9,25 +12,21 @@ import { Todo } from '../core/todo';
   providers: [TodoService]
 })
 export class TodosComponent implements OnInit {
-  todos: Todo[];
+  todos: KeyedCollection<Todo> = new KeyedCollection<Todo>(todo => todo.id);
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() : void {
-    this.getTodos();
-  }
-
-  getTodos() : void {
-    this.todos = this.todoService.getTodos();
+    this.todoService.getTodos().subscribe(
+      (operation: Operation<Todo>) => this.todos.addOrUpdateItem(operation.data)
+    );
   }
 
   addTodo(content: string) : void {
-    let todo = new Todo(content);
-    this.todoService.addTodo(todo);
-    this.getTodos();
+    this.todoService.addTodo(new Todo(content));
   }
 
   markComplete(todo: Todo) : void {
-    this.todoService.markComplete(todo);
+    this.todoService.changeStatus(todo, true);
   }
 }

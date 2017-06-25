@@ -1,24 +1,26 @@
 import { Injectable } from '@angular/core';
 
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
+
 import { Todo } from '../core/todo';
+import { Operation, Action, Status } from '../core/operation';
 
 @Injectable()
 export class TodoService {
-  private todos: Todo[] = [];
+  private todosSubject = new Subject<Operation<Todo>>();
 
-  getTodos(): Todo[] {
-    return this.todos;
+  getTodos(): Observable<Operation<Todo>> {
+    return this.todosSubject.asObservable();
   }
 
   addTodo(todo: Todo) : void {
-    this.todos.push(todo);
+    this.todosSubject.next(new Operation<Todo>(todo, Action.Created, Status.Succeeded));
   }
 
-  markComplete(todo: Todo) : void {
-    todo.completed = true;
-  }
+  changeStatus(todo: Todo, completed: boolean) : void {
+    todo.completed = completed;
 
-  markIncomplete(todo: Todo) : void {
-    todo.completed = false;
+    this.todosSubject.next(new Operation<Todo>(todo, Action.Updated, Status.Succeeded));
   }
 }

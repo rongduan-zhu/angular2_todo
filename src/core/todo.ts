@@ -3,7 +3,10 @@ export class Todo {
 
   content: string;
 
+  readonly id: string;
+
   constructor(content: string) {
     this.content = content;
+    this.id = Math.random().toString(36).substring(2);
   }
 }
