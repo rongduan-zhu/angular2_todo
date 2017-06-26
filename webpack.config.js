@@ -45,7 +45,12 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: '/var/assets_build/input/index.html',
-      chunks: ['polyfills', 'vendor', 'app']
+      chunks: ['polyfills', 'vendor', 'app'],
+      chunksSortMode: (function(order) {
+        return function({ names: [a] }, { names: [b] }) {
+          return order.indexOf(a) - order.indexOf(b);
+        };
+      })(['polyfills', 'vendor', 'app'])
     })
   ],
 

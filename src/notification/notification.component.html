@@ -1,0 +1,6 @@
+<h1>Notifications</h1>
+<ul>
+  <li *ngFor="let notification of (notifications | async)">
+    <span>{{ notification.content }}</span>
+  </li>
+</ul>

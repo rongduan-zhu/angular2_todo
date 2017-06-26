@@ -8,8 +8,7 @@ import { Operation, Action, Status } from '../core/operation';
 
 @Component({
   selector: 'todos',
-  templateUrl: './todos.component.html',
-  providers: [TodoService]
+  templateUrl: './todos.component.html'
 })
 export class TodosComponent implements OnInit {
   todos: Observable<Todo[]>;
@@ -27,7 +26,7 @@ export class TodosComponent implements OnInit {
     this.todoService.addTodo(new Todo(content));
   }
 
-  markComplete(todo: Todo) : void {
-    this.todoService.changeStatus(todo, true);
+  changeStatus(todo: Todo, newStatus: boolean) : void {
+    this.todoService.changeStatus(todo, newStatus);
   }
 }

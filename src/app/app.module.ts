@@ -4,8 +4,10 @@ import { NgModule }      from '@angular/core';
 
 import { AppComponent }  from './app.component';
 import { TodosComponent } from '../todo/todos.component';
+import { NotificationComponent } from '../notification/notification.component';
 
 import { TodoService } from '../services/todo.service';
+import { NotificationService } from '../services/notification.service';
 
 import { TodoPipe } from '../utils/todo.pipe';
 
@@ -17,10 +19,12 @@ import { TodoPipe } from '../utils/todo.pipe';
   declarations: [
     AppComponent,
     TodosComponent,
+    NotificationComponent,
     TodoPipe
   ],
   providers: [
-    TodoService
+    TodoService,
+    NotificationService
   ],
   bootstrap: [ AppComponent ]
 })
