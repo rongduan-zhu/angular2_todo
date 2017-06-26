@@ -1,7 +1,7 @@
 export interface IDictionary<TItem> {
   addOrUpdateItem(item: TItem) : void;
 
-  enumerate() : TItem[];
+  toArray() : TItem[];
 
   existsItem(item: TItem) : boolean;
 
@@ -23,7 +23,7 @@ export class KeyedCollection<TItem> implements IDictionary<TItem> {
     this.data[this.getKeyForItem(item)] = item;
   }
 
-  enumerate() : TItem[] {
+  toArray() : TItem[] {
     return Object.values(this.data);
   }
 

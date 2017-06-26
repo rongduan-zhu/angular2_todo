@@ -8,6 +8,6 @@ import { Todo } from '../core/todo';
 })
 export class TodoPipe implements PipeTransform {
   transform(todos: Todo[], completed: boolean): Todo[] {
-    return todos.filter(todo => todo.completed == completed);
+    return todos == null ? todos : todos.filter(todo => todo.completed == completed);
   }
 }

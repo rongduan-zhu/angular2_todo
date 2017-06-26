@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 import { TodoService } from '../services/todo.service';
 import { Todo } from '../core/todo';
 import { Operation, Action, Status } from '../core/operation';
-
-import { KeyedCollection } from '../utils/keyedCollection';
 
 @Component({
   selector: 'todos',
@@ -12,14 +12,15 @@ import { KeyedCollection } from '../utils/keyedCollection';
   providers: [TodoService]
 })
 export class TodosComponent implements OnInit {
-  todos: KeyedCollection<Todo> = new KeyedCollection<Todo>(todo => todo.id);
+  todos: Observable<Todo[]>;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() : void {
-    this.todoService.getTodos().subscribe(
-      (operation: Operation<Todo>) => this.todos.addOrUpdateItem(operation.data)
-    );
+    this.todos = this
+      .todoService
+      .getTodos()
+      .map((operation: Operation<Todo[]>) => operation.data);
   }
 
   addTodo(content: string) : void {

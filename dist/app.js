@@ -6969,28 +6969,30 @@ var AppComponent = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TodosComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_todo_service__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_todo__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_keyedCollection__ = __webpack_require__(630);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__ = __webpack_require__(434);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_todo_service__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_todo__ = __webpack_require__(210);
 
 
 
 var TodosComponent = (function () {
     function TodosComponent(todoService) {
         this.todoService = todoService;
-        this.todos = new __WEBPACK_IMPORTED_MODULE_2__utils_keyedCollection__["a" /* KeyedCollection */](function (todo) { return todo.id; });
     }
     TodosComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.todoService.getTodos().subscribe(function (operation) { return _this.todos.addOrUpdateItem(operation.data); });
+        this.todos = this
+            .todoService
+            .getTodos()
+            .map(function (operation) { return operation.data; });
     };
     TodosComponent.prototype.addTodo = function (content) {
-        this.todoService.addTodo(new __WEBPACK_IMPORTED_MODULE_1__core_todo__["a" /* Todo */](content));
+        this.todoService.addTodo(new __WEBPACK_IMPORTED_MODULE_2__core_todo__["a" /* Todo */](content));
     };
     TodosComponent.prototype.markComplete = function (todo) {
         this.todoService.changeStatus(todo, true);
     };
-    TodosComponent.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_0__services_todo_service__["a" /* TodoService */] }]; };
+    TodosComponent.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_1__services_todo_service__["a" /* TodoService */] }]; };
     return TodosComponent;
 }());
 
@@ -22424,19 +22426,20 @@ function View_TodosComponent_0(_l) {
             return ad;
         }, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Add Todo'])),
         (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'h1', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Active'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 5, 'ul', [['class', 'todos']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(),
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* ɵand */](16777216, null, null, 2, null, View_TodosComponent_1)),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'h1', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Active'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 6, 'ul', [['class', 'todos']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* ɵand */](16777216, null, null, 3, null, View_TodosComponent_1)),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵdid */](802816, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["l" /* NgForOf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* ViewContainerRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* IterableDiffers */]], { ngForOf: [0, 'ngForOf'] }, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_38" /* ɵpid */](0, __WEBPACK_IMPORTED_MODULE_3__input_utils_todo_pipe__["a" /* TodoPipe */], []), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'h1', [], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Completed'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 5, 'ul', [['class', 'todos']], null, null, null, null, null)),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* ɵand */](16777216, null, null, 2, null, View_TodosComponent_2)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵdid */](802816, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["l" /* NgForOf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* ViewContainerRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* IterableDiffers */]], { ngForOf: [0,
-                'ngForOf'] }, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_38" /* ɵpid */](0, __WEBPACK_IMPORTED_MODULE_3__input_utils_todo_pipe__["a" /* TodoPipe */], []), (_l()(),
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' ']))], function (_ck, _v) {
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* IterableDiffers */]], { ngForOf: [0, 'ngForOf'] }, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_38" /* ɵpid */](131072, __WEBPACK_IMPORTED_MODULE_2__angular_common__["m" /* AsyncPipe */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* ChangeDetectorRef */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_38" /* ɵpid */](0, __WEBPACK_IMPORTED_MODULE_3__input_utils_todo_pipe__["a" /* TodoPipe */], []),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 1, 'h1', [], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, ['Completed'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_29" /* ɵeld */](0, null, null, 6, 'ul', [['class', 'todos']], null, null, null, null, null)), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_30" /* ɵand */](16777216, null, null, 3, null, View_TodosComponent_2)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_32" /* ɵdid */](802816, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_common__["l" /* NgForOf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* ViewContainerRef */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* TemplateRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* IterableDiffers */]], { ngForOf: [0, 'ngForOf'] }, null),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_38" /* ɵpid */](131072, __WEBPACK_IMPORTED_MODULE_2__angular_common__["m" /* AsyncPipe */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_2" /* ChangeDetectorRef */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_38" /* ɵpid */](0, __WEBPACK_IMPORTED_MODULE_3__input_utils_todo_pipe__["a" /* TodoPipe */], []),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_31" /* ɵted */](null, [' ']))], function (_ck, _v) {
         var _co = _v.component;
-        var currVal_0 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵunv */](_v, 14, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 15).transform(_co.todos.enumerate(), false));
+        var currVal_0 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵunv */](_v, 14, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 16).transform(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵunv */](_v, 14, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 15).transform(_co.todos)), false));
         _ck(_v, 14, 0, currVal_0);
-        var currVal_1 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵunv */](_v, 24, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 25).transform(_co.todos.enumerate(), true));
-        _ck(_v, 24, 0, currVal_1);
+        var currVal_1 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵunv */](_v, 25, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 27).transform(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵunv */](_v, 25, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_39" /* ɵnov */](_v, 26).transform(_co.todos)), true));
+        _ck(_v, 25, 0, currVal_1);
     }, null);
 }
 function View_TodosComponent_Host_0(_l) {
@@ -22506,7 +22509,7 @@ var TodoPipe = (function () {
     function TodoPipe() {
     }
     TodoPipe.prototype.transform = function (todos, completed) {
-        return todos.filter(function (todo) { return todo.completed == completed; });
+        return todos == null ? todos : todos.filter(function (todo) { return todo.completed == completed; });
     };
     return TodoPipe;
 }());
@@ -27632,6 +27635,18 @@ exports.MulticastOperator = MulticastOperator;
 
 /***/ }),
 
+/***/ 434:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var Observable_1 = __webpack_require__(0);
+var map_1 = __webpack_require__(56);
+Observable_1.Observable.prototype.map = map_1.map;
+//# sourceMappingURL=map.js.map
+
+/***/ }),
+
 /***/ 44:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27653,7 +27668,7 @@ exports.MulticastOperator = MulticastOperator;
 /* unused harmony export NgSwitchDefault */
 /* unused harmony export NgTemplateOutlet */
 /* unused harmony export NgComponentOutlet */
-/* unused harmony export AsyncPipe */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return AsyncPipe; });
 /* unused harmony export DatePipe */
 /* unused harmony export I18nPluralPipe */
 /* unused harmony export I18nSelectPipe */
@@ -32019,7 +32034,7 @@ var KeyedCollection = (function () {
     KeyedCollection.prototype.addOrUpdateItem = function (item) {
         this.data[this.getKeyForItem(item)] = item;
     };
-    KeyedCollection.prototype.enumerate = function () {
+    KeyedCollection.prototype.toArray = function () {
         return Object.values(this.data);
     };
     KeyedCollection.prototype.existsItem = function (item) {
@@ -32200,21 +32215,25 @@ exports.isObject = isObject;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_operation__ = __webpack_require__(629);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_keyedCollection__ = __webpack_require__(630);
+
 
 
 var TodoService = (function () {
     function TodoService() {
         this.todosSubject = new __WEBPACK_IMPORTED_MODULE_0_rxjs_Subject__["Subject"]();
+        this.todos = new __WEBPACK_IMPORTED_MODULE_2__utils_keyedCollection__["a" /* KeyedCollection */](function (todo) { return todo.id; });
     }
     TodoService.prototype.getTodos = function () {
         return this.todosSubject.asObservable();
     };
     TodoService.prototype.addTodo = function (todo) {
-        this.todosSubject.next(new __WEBPACK_IMPORTED_MODULE_1__core_operation__["a" /* Operation */](todo, __WEBPACK_IMPORTED_MODULE_1__core_operation__["b" /* Action */].Created, __WEBPACK_IMPORTED_MODULE_1__core_operation__["c" /* Status */].Succeeded));
+        this.todos.addOrUpdateItem(todo);
+        this.todosSubject.next(new __WEBPACK_IMPORTED_MODULE_1__core_operation__["a" /* Operation */](this.todos.toArray(), __WEBPACK_IMPORTED_MODULE_1__core_operation__["b" /* Action */].Created, __WEBPACK_IMPORTED_MODULE_1__core_operation__["c" /* Status */].Succeeded));
     };
     TodoService.prototype.changeStatus = function (todo, completed) {
         todo.completed = completed;
-        this.todosSubject.next(new __WEBPACK_IMPORTED_MODULE_1__core_operation__["a" /* Operation */](todo, __WEBPACK_IMPORTED_MODULE_1__core_operation__["b" /* Action */].Updated, __WEBPACK_IMPORTED_MODULE_1__core_operation__["c" /* Status */].Succeeded));
+        this.todosSubject.next(new __WEBPACK_IMPORTED_MODULE_1__core_operation__["a" /* Operation */](this.todos.toArray(), __WEBPACK_IMPORTED_MODULE_1__core_operation__["b" /* Action */].Updated, __WEBPACK_IMPORTED_MODULE_1__core_operation__["c" /* Status */].Succeeded));
     };
     return TodoService;
 }());

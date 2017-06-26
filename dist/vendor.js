@@ -21235,7 +21235,7 @@ exports.MulticastOperator = MulticastOperator;
 /* unused harmony export NgSwitchDefault */
 /* unused harmony export NgTemplateOutlet */
 /* unused harmony export NgComponentOutlet */
-/* unused harmony export AsyncPipe */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return AsyncPipe; });
 /* unused harmony export DatePipe */
 /* unused harmony export I18nPluralPipe */
 /* unused harmony export I18nSelectPipe */
